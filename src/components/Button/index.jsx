@@ -1,8 +1,8 @@
 import { Container, Input, Wrapper } from "./styles";
 import { isEquals, isNum } from "../../utils/ButtonControllers";
 
-const Button = ({children, onClick, isInput}) =>{
-
+const Button = ({children, onClick, isInput, onKeyDown}) =>{
+    
     return(
         <Container>
             {

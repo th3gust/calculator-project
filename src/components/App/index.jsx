@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../Button";
 import { Container, Wrapper, Row } from "./styles";
 import { arrOperators } from "../../utils/Operators";
@@ -40,7 +40,7 @@ const App = () =>{
         }
     }
 
-    const handleSquare = (value) =>{
+    const handleSquare = () =>{
         if (input === ''){
             return input
         } else{
@@ -48,7 +48,7 @@ const App = () =>{
         }
     }
 
-    const handleCube = (value) =>{
+    const handleCube = () =>{
         if (input === ''){
             return input
         } else{
@@ -59,6 +59,28 @@ const App = () =>{
     const handleBackspace = () =>{
         setInput(input.substring(0, input.length - 1))
     }
+
+    const handleKey = (e) =>{
+        const key = e.key
+        const regex = /[0-9]/
+        // console.log(key)
+
+        if (regex.test(key)){
+            setInput(input+key)
+        } else if (key === "Enter"){
+            calculate()
+        } else if (key === "Delete"){
+            handleBackspace()
+        } else if (arrOperators.includes(key)){
+            insertOperator(key)
+        }
+    }
+
+    useEffect(() =>{
+        document.addEventListener('keydown', handleKey)
+    },[input])
+
+   
 
     return (
         <Container>
