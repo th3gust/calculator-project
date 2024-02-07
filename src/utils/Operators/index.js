@@ -1,1 +1,1 @@
-export const arrOperators = ['*','/','+','-','.']
+export const arrOperators = ['*','/','+','-','.', "^"]
